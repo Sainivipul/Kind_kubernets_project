@@ -1,0 +1,20 @@
+# crate one name space 
+[ kubectl create na nginx ] we will create complete arc in this namewspace 
+[ kubectl run nginx --image=nginx -n nginx ] same like a container it will create a nginx pod
+[ kubectl get pods -n nginx ]
+
+we can create and manage pods by command line but its not ideal lets make a new manifest file 
+
+after creating namewspacel.yml
+
+[kubectl apply -f name namespace.yml]
+
+[ kubectl apply -f pod.yml ]
+
+# how to enter nginx pod 
+
+[ kubectl exec -it nginx-pod -n nginx -- bash ]
+
+[ kubectl delete -f pod.yml ] because deployment file will create a pod also 
+
+
