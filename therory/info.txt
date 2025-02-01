@@ -1,0 +1,39 @@
+Kubernets firstly known as borqe and now it is opensource 
+
+Kubernets is an orchestration tool 
+
+it handle multiple docker containers such as communication , scalling autiohealing etc 
+
+old time monolithic applications was created now its microservices 
+
+Monolithic : one single application all repo init (difficult to manage and costly to manage )
+
+Microservice : one app dictributed in micro services : backend, froundend ,data (easy to manage and less costly independent services )
+
+all these microservices can be run via docker and these dockers manages by kubernets 
+
+
+KUBERNETS ARCHITECTURE :::
+
+ Master Node (Control Plane): The master node is responsible for managing the Kubernetes cluster
+
+ The master node contains several important components:
+ API(application programable interface ) SERVER : communication gateway with all componets 
+                                                It handles HTTP requests, validates them, and updates the state in etcd
+
+Scheduler (kube-scheduler):: It watches for new pods that need to be scheduled onto worker nodes and assigns them to available nodes based on resource availability.
+
+Controller Manager (kube-controller-manager): Ensures that the cluster is in the desired state.
+ 
+etcd: A distributed key-value store used to store all cluster data, including configuration, state, and metadata.
+
+WORKERNODE (NODE):
+
+Kubelet: An agent that runs on each worker node. It ensures that containers are running in pods, as specified by the API server.
+
+Kube Proxy: Maintains network rules for pod communication, ensuring that each pod can reach others as needed. It works as a load balancer for service IPs.
+
+Container Runtime: The software responsible for running containers (e.g., Docker, containerd, CRI-O).
+
+Pod: The smallest and simplest unit in Kubernetes, a pod can contain one or more containers that share the same network and storage.
+

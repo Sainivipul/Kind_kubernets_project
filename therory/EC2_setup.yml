@@ -1,0 +1,60 @@
+kubernets cluster can be made by 
+kubeadm : heavy need one or more atlead t2 medium 
+minicube: 
+Kind cluster(kubernmets in docker ) :cluster is a tool for running Kubernetes clusters locally, using Docker containers as nodes. It's designed primarily for testing and development purposes, 
+
+EKS/AKS/GKE: on cloud 
+# basic ec2 setup 
+
+EC2: requirement --> t2 medium / storage 30gb
+
+# Step :1 
+
+copy installation script from kind_cluster folder and paste in a file in ec2 and run 
+give executable permission 
+
+# Step 2: install docker 
+sudo apt update -y 
+sudo apt-get install docker.io 
+sudo usermod -aG docker $USER && newgrp docker 
+docker ps 
+kubectl version 
+kind --version
+docker --version
+
+## config file 
+step 3 : setup 3 worker node and one master node cluster 
+this config file will be a yaml file 
+
+kind: Cluster
+apiversion: kind.x-k8s.io/v1alpha4
+
+nodes:
+- role: control-plane 
+  image: Kindest/node:v1.31.2 # no need to remember can be checkd by documnetation
+- role: worker 
+  image: Kindest/node:v1.31.2 # no need to remember can be checkd by documnetation
+- role: worker 
+  image: Kindest/node:v1.31.2 # no need to remember can be checkd by documnetation
+- role: worker 
+  image: Kindest/node:v1.31.2 # no need to remember can be checkd by documnetation
+  extraPortMappings: 
+  - containerPort: 80
+    hostPort: 80
+    protocol: TCP
+  - containerPort: 443
+    hostPortPort: 443
+    protocol: TCP
+
+# step4: create cluster 
+kind create cluster --name=mycluster --config=config.yml
+
+#NOTE once cluster is running we can interact with cluter using kubectl 
+# any node where kubeadm is initialized is master node 
+
+""" now lets understand how this architecture work 
+NAMESPACE[(group){ ({[docker]POD}deployment)Service}]"
+
+
+
+
