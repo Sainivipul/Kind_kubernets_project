@@ -18,3 +18,16 @@ after creating namewspacel.yml
 [ kubectl delete -f pod.yml ] because deployment file will create a pod also 
 
 
+currently we are running on two pods now if we want to 
+scale on high traffic 
+
+kubectl scale deployment/nginx-deployment -n nginx --replica=5 
+
+kubectl get pods 
+kubectl get pods -n nginx -o wide
+NOTE: rolling update 
+we can chnage the running image of nginex 
+
+kubectl set image deploymnet/nginx-deployment -n nginx nginx=nginx:1.27.3 
+NOTE while this container was running or throwing error still that container was running not all pids will be down 
+thats the main function of pods 
