@@ -31,3 +31,40 @@ we can chnage the running image of nginex
 kubectl set image deploymnet/nginx-deployment -n nginx nginx=nginx:1.27.3 
 NOTE while this container was running or throwing error still that container was running not all pids will be down 
 thats the main function of pods 
+
+Demon_sets :: ensure atleast one pod is running in each node 
+
+kubectl apply -f daemonsets.yml 
+
+
+jobs: are used for onetime task on one or more containers 
+
+STORAGE:::
+when we create pods for our work there are high chnace that pod can be destroyed or 
+delete due to any reason and new pod will be created for autohealing 
+but the pod data can be deleted so we have to bind pod data with host 
+for this we use persistence volume 
+
+vim persistantvolume.yml
+
+Service:::
+In Kubernetes, a Service is a method for exposing a network application that is running as one or more Pods in your cluster.
+The available type values and their behaviors are:
+ClusterIP
+Exposes the Service on a cluster-internal IP. Choosing this value makes the Service only reachable from within the cluster
+ This is the default that is used if you don't explicitly specify a type for a Service. 
+
+ NodePort:
+ Exposes the Service on each Node's IP at a static port (the NodePort). To make the node port available
+
+ LoadBalancer
+ Exposes the Service externally using an external load balancer. Kubernetes does not directly offer a load balancing component; you must provide one, or you can integrate your Kubernetes cluster with a cloud provider.
+
+ ExternalName
+ Maps the Service to the contents of the externalName field
+
+ NOTE :: but this will not only enough to aceess our application on browser 
+ because our pod running is a docker container and we have to doa port forwording 
+
+{sudo -E kubectl port-forword service/nginx-service -n nginx 80:80 --address=0.0.0.0}
+
